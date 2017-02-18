@@ -28,6 +28,8 @@ echo -n $ESP8266_ARDUINO_DEPLOY_KEY_B64 > ~/.ssh/esp8266_arduino_deploy_b64
 base64 --decode --ignore-garbage ~/.ssh/esp8266_arduino_deploy_b64 > ~/.ssh/esp8266_arduino_deploy
 chmod 600 ~/.ssh/esp8266_arduino_deploy
 echo -e "Host github.com\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/esp8266_arduino_deploy" >> ~/.ssh/config
+git config --global user.email "igrr@users.noreply.github.com"
+git config --global user.name "Ivan Grokhotkov"
 
 # Clong gh-pages branch
 git clone git@github.com:esp8266/Arduino.git --branch gh-pages --single-branch gh-pages
