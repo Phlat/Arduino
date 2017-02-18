@@ -3,15 +3,14 @@ language: bash
 os:
   - linux
 env:
-  # - BUILD_TYPE=build
-  - BUILD_TYPE=deploy_nightly_package
+  - BUILD_TYPE=build
 
-# addons:
-#   apt:
-#     sources:
-#       - ubuntu-toolchain-r-test
-#     packages:
-#       - g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
 
 script:
   - $TRAVIS_BUILD_DIR/tests/common.sh
