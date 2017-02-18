@@ -37,6 +37,8 @@ cd gh-pages
 
 # Update package_esp8266com_index.json
 cp ../versions/$ver/package_esp8266com_index.json ./
+ls -l package_esp8266com_index.json
 git add package_esp8266com_index.json
+git status
 git commit -m "Update nightly build to $ver\n\nBUILT_FROM: $commit"
 git push origin gh-pages
