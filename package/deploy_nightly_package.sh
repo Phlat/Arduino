@@ -35,10 +35,14 @@ git config --global user.name "Ivan Grokhotkov"
 git clone git@github.com:esp8266/Arduino.git --branch gh-pages --single-branch gh-pages
 cd gh-pages
 
-# Update package_esp8266com_index.json
-cp ../versions/$ver/package_esp8266com_index.json ./
-ls -l package_esp8266com_index.json
-git add package_esp8266com_index.json
-git status
-git commit -m "Update nightly build to $ver\n\nBUILT_FROM: $commit"
-git push origin gh-pages
+if git log | grep $commit; then
+	echo "Nightly version hasn't changed, not updating"
+else
+	# Update package_esp8266com_index.json
+	cp ../versions/$ver/package_esp8266com_index.json ./
+	ls -l package_esp8266com_index.json
+	git add package_esp8266com_index.json
+	git status
+	git commit -m "Add nightly build of $commit as $ver"
+	git push origin gh-pages
+fi
